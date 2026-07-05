@@ -5,6 +5,10 @@ const connectDB = require('./config/dbConnection');
 const errorHandler = require('./middleware/errorHandler'); 
 require('dotenv').config();
 
+const dns = require("dns");
+dns.setServers(["1.1.1.1", "8.8.8.8"]);
+
+
 const app = express();
 app.set('trust proxy' , 1);
 const PORT = process.env.PORT || 8080;
