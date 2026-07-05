@@ -7,7 +7,8 @@ const nodemailer = require('nodemailer');
 const transporter = nodemailer.createTransport({
   host: 'smtp.ethereal.email',
   port: 587,
-  auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASS }
+  auth: { user: process.env.EMAIL_USER, pass: process.env.EMAIL_PASS },
+  tls: { rejectUnauthorized: false } // solved timeout issues
 });
 
 exports.register = async (req, res) => {
@@ -82,7 +83,7 @@ exports.loginStep2 = async (req, res) => {
     if (isValidOTP === null) return res.status(400).json({ success: false, message: "Invalid or expired OTP" });
 
     const token = jwt.sign({ userId: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: '1h' });
-    res.cookie('authToken', token, { httpOnly: true, secure: false, maxAge: 3600000 });
+    res.cookie('authToken', token, { httpOnly: true, secure: true, sameSite: 'none', maxAge: 3600000 });  // secure - important for Render & sameSite - important for Cross-origin
     
     res.status(200).json({ success: true, message: "Login successful", role: user.role });
   } catch (error) {
