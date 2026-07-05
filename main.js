@@ -17,9 +17,10 @@ const PORT = process.env.PORT || 8080;
 connectDB();
 
 // Middleware
-app.use(cors({ origin: process.env.FRONTEND_URL, credentials: true }));
-app.use(express.json());
+app.use(cors({ origin: process.env.FRONTEND_URL, methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], credentials: true }));
 app.use(cookieParser());
+app.use(express.json());
+
 
 // Routes
 app.use('/api/auth', require('./routes/authRoutes'));
