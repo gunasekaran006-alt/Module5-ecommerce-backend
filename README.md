@@ -1,4 +1,4 @@
-# Module 5 - E-Commerce Backend
+E-Commerce Backend
 
 This is a robust and secure Backend API built for an E-Commerce platform using the MERN stack.
 
@@ -31,3 +31,44 @@ This is a robust and secure Backend API built for an E-Commerce platform using t
 1. Clone the repository:
    ```bash
    git clone https://github.com/gunasekaran006-alt/Module5-ecommerce-backend.git
+
+```
+
+2. Install dependencies:
+```bash
+npm install
+
+```
+
+
+3. Create a `.env` file and configure your variables:
+```env
+PORT=8080
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+FRONTEND_URL=your_frontend_url
+EMAIL_USER=your_smtp_user
+EMAIL_PASS=your_smtp_pass
+
+```
+
+
+4. Start the server:
+```bash
+npm run dev
+
+```
+
+
+
+## 🚀 Deployment
+
+This project is deployed on **Render.com**.
+
+* **Live Base URL:** https://module5-ecommerce-backend-61zi.onrender.com
+
+---
+
+*Developed by: Gunasekaran S*
+
+```
