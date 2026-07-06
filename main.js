@@ -3,6 +3,7 @@ const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const connectDB = require('./config/dbConnection');
 const errorHandler = require('./middleware/errorHandler'); 
+const cartRoutes = require('./routes/cartRoutes');
 require('dotenv').config();
 
 const dns = require("dns");
@@ -27,6 +28,7 @@ app.use('/api/auth', require('./routes/authRoutes'));
 app.use('/api/products', require('./routes/productRoutes'));
 app.use('/api/orders', require('./routes/orderRoutes')); 
 app.use('/api/profile', require('./routes/userProfileRoutes')); 
+app.use('/api/cart', cartRoutes);
 
 // Error Handler Middleware (Must be at the end)
 app.use(errorHandler);
